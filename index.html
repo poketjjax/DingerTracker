@@ -2,25 +2,52 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello React!</title>
+    <title>Dinger Tracker</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="build/react.js"></script>
-    <script src="build/react-dom.js"></script>
-    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/dingerTracker.js"></script>
   </head>
   <body>
-    <div id="example"></div>
-    <script type="text/babel">
-      ReactDOM.render(
-        <div className="container welcome">
-          <div className="jumbotron">
-            <button className="btn btn-lg pull-right">Next ></button>
+    <div class='container'>
+      <div class='jumbotron signUpForm'>
+        <p>
+          
+        </p>
+        <form action="test">
+          <h4>How would you like to receive your dinger notification?</h4>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" id="textMessageRadioButton" onclick="HandleTextMessageClick()" checked>Text Message
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="optradio" onclick="HandleEmailClick()">Email
+          </label>
+          <br><br>
+          <!-- Form to display when text message is selected -->
+          <div id="textMessageForm">
+            <label>Cell Phone Carrier:</label>
+            <select class="form-control" id="cellCarrierDropdown">
+              <option selected="selected" disabled="disabled">Select One...</option>
+              <option value="att">AT&T</option>
+              <option value="sprint">Sprint</option>
+              <option value="verizon">Verizon</option>
+            </select>
+            <br>
+            <label>Phone Number:</label>
+            <input id="phoneNumber" type="text" class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="5551234567"
+            maxlength="10" pattern="\d{10}" title="Please enter only the 10 digits in your phone number" /> (Only enter 10 numbers)
           </div>
-        </div>,
-        document.getElementById('example')
-      );
-    </script>
+
+          <!-- Form to display when email is selected -->
+          <div id="emailForm" style="display: none;">
+            <label>Email Address:</label>
+            <input id="emailAddress" type="text" class="form-control" placeholder="dingers@gmail.com" />
+          </div>
+
+          <button class='continueBtn pull-right'>Sign Up ></button> 
+        </form>
+      </div>
+    </div>
   </body>
 </html>
